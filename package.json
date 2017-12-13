@@ -1,0 +1,26 @@
+{
+    "name": "language-cmm-vscode",
+    "displayName": "PRACTICE Script Language",
+    "description": "Provides basic syntax highlighting for PRACTICE Script Language",
+    "version": "0.0.1",
+    "publisher": "khoa-io",
+    "engines": {
+        "vscode": "^1.18.0"
+    },
+    "categories": [
+        "Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "cmm",
+            "aliases": ["PRACTICE Script Language", "cmm"],
+            "extensions": [".cmm"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "cmm",
+            "scopeName": "source.cmm",
+            "path": "./syntaxes/cmm.tmLanguage.json"
+        }]
+    }
+}
