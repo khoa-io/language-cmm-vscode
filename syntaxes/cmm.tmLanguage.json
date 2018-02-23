@@ -1,28 +1,140 @@
 {
     "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-    "name": "PRACTICE Script Language",
-    "patterns": [{
-            "include": "#keywords"
+    "name": "PRACTICE",
+    "patterns": [
+        {
+            "include": "#commands"
+        },
+        {
+            "include": "#trace32-commands"
         },
         {
             "include": "#strings"
+        },
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#macros"
+        },
+        {
+            "include": "#function-call"
+        },
+        {
+            "include": "#labels"
+        },
+        {
+            "include": "#literals"
+        },
+        {
+            "include": "#operators"
+        },
+        {
+            "include": "#paths"
         }
     ],
     "repository": {
-        "keywords": {
-            "patterns": [{
-                "name": "keyword.control.cmm",
-                "match": "\\b(?i)(goto|gosub|return|jumpto|do|enddo|run|end|entry|local|global|if|else|while|repeat|wait|on|inkey|print|area|enter|title|beep|read|write|open|close|stop|continue|pbreak|pstep|plist|pedit|pmacro|pbreak)\\b"
-            }]
+        "paths": {
+            "patterns": [
+                {
+                    "name": "constant.other.cmm",
+                    "match": "[a-zA-Z0-9\\:\\/\\/\\\\\\-_]+\\.[a-z0-9]{1,3}\\b"
+                }
+            ]
+        },
+        "operators": {
+            "patterns": [
+                {
+                    "name": "keyword.operator.cmm",
+                    "match": "(\\(\\))|(\\{\\})|(\\-\\-)|(\\+\\+)|(\\.\\.)|(\\<\\<)|(\\>\\>)|(\\*)|(\\/)|(\\%)|(\\+)|(\\-)|(\\=)|(\\!\\=)|(\\>\\=)|(\\<\\=)|(\\&)|(\\^)|(\\&\\&)|(\\^\\^)|(\\|\\|)"
+                }
+            ]
+        },
+        "commands": {
+            "patterns": [
+                {
+                    "name": "keyword.control.flow.cmm",
+                    "match": "(?i)\\b(stop|end|continue|do|enddo|run|gosub|return|goto|jumpto|if|else|while|repeat|on|globalon|wait)\\b"
+                },
+                {
+                    "name": "storage.modifier.declaration.cmm",
+                    "match": "(?i)\\b(local|global|private|parameters|returnvalues|entry)\\b"
+                }
+            ]
+        },
+        "trace32-commands": {
+            "patterns": [
+                {
+                    "name": "support.function.cmm",
+                    "match": "(?i)\\b((screen|data|system|break|var|plist|pmacro|pedit|pbreak|pstep|)(\\.[a-zA-Z][a-zA-Z0-9]*)+)\\b"
+                },
+                {
+                    "name": "support.function.cmm",
+                    "match": "(?i)\\b(print|beep|enter|inkey|open|close|read|write|break|help)\\b"
+                }
+            ]
+        },
+        "macros": {
+            "patterns": [
+                {
+                    "name": "variable.other.cmm",
+                    "match": "&+[a-zA-Z]+[a-zA-Z0-9_]*\\b"
+                }
+            ]
         },
         "strings": {
-            "name": "string.quoted.double.cmm",
-            "begin": "\"",
-            "end": "\"",
-            "patterns": [{
-                "name": "constant.character.escape.cmm",
-                "match": "\\\\."
-            }]
+            "patterns": [
+                {
+                    "name": "string.quoted.double.cmm",
+                    "begin": "\"",
+                    "end": "\""
+                },
+                {
+                    "name": "string.quoted.single.cmm",
+                    "begin": "'",
+                    "end": "'"
+                }
+            ]
+        },
+        "labels": {
+            "patterns": [
+                {
+                    "name": "entity.name.section.cmm",
+                    "match": "^[a-zA-Z]+\\:"
+                }
+            ]
+        },
+        "function-call": {
+            "patterns": [
+                {
+                    "name": "entity.name.function.cmm",
+                    "match": "(?xi)\\.[a-zA-Z][a-zA-Z0-9_]*"
+                }
+            ]
+        },
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.character.cmm",
+                    "match": "(;).*$"
+                },
+                {
+                    "name": "comment.double-slash.cmm",
+                    "match": "(\\/\\/).*$"
+                }
+            ]
+        },
+        "literals": {
+            "patterns": [
+                {
+                    "name": "constant.numeric.cmm",
+                    "match": "(?i)\\b(([0-9]+\\.)|([0-9]+\\.[0-9]+)|(0x[0-9A-FX]+)|(0y[0-1x]+))\\b"
+                },
+                {
+                    "name": "constant.language.cmm",
+                    "match": "(?i)(TRUE\\(\\))|(FALSE\\(\\))"
+                }
+            ]
         }
     },
     "scopeName": "source.cmm"
