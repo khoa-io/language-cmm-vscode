@@ -1,9 +1,9 @@
 {
     "name": "language-cmm-vscode",
-    "repository": "https://gitlab.com/khoa-io/language-cmm-vscode.git",
+    "repository": "https://github.com/khoa-io/language-cmm-vscode",
     "displayName": "PRACTICE Script Language Support",
     "description": "Provides basic syntax highlighting for PRACTICE Script Language",
-    "version": "1.0-alpha",
+    "version": "1.0.0",
     "publisher": "khoa-io",
     "engines": {
         "vscode": "^1.18.0"
