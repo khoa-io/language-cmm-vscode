@@ -11,6 +11,7 @@
     "categories": [
         "Languages"
     ],
+    "preview": true,
     "contributes": {
         "languages": [{
             "id": "cmm",

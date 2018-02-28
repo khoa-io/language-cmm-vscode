@@ -5,3 +5,7 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 - Initial release
+
+## [1.2.0] - 2018-02-27
+- Basic highlighting.
+- Publish extension to marketplace.
